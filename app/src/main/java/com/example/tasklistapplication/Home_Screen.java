@@ -5,9 +5,12 @@ import androidx.lifecycle.ViewModel;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Home_Screen extends AppCompatActivity {
 
@@ -21,6 +24,11 @@ public class Home_Screen extends AppCompatActivity {
         Intent i = getIntent();
         amountList = i.getStringArrayListExtra("amountList");
         descList = i.getStringArrayListExtra("descList");
+        String dateAndTime = java.text.DateFormat.getDateInstance().format(new Date());
+        TextView currentDate = findViewById(R.id.textView);
+        String message = "Today's date\n";
+        String messageWithDate = message.concat(dateAndTime);
+        currentDate.setText(messageWithDate);
 
     }
 
