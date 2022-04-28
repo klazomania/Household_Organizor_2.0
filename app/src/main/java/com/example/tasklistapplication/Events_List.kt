@@ -21,7 +21,7 @@ class Events_List : AppCompatActivity() {
     private lateinit var taskAdapter:TaskAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_events_list)
         userList= ArrayList()
         addsBtn=findViewById(R.id.fab)
         backBtn=findViewById(R.id.fab2)
