@@ -1,5 +1,6 @@
 package com.example.tasklistapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class Chore_List : AppCompatActivity() {
     private lateinit var addsBtn:FloatingActionButton
+    private lateinit var backBtn:FloatingActionButton
     private lateinit var recv:RecyclerView
     private lateinit var choreList:ArrayList<ChoreData>
     private lateinit var choreAdapter: ChoreAdapter
@@ -27,8 +29,17 @@ class Chore_List : AppCompatActivity() {
         recv.layoutManager=LinearLayoutManager(this)
         recv.adapter=choreAdapter
         addsBtn.setOnClickListener{addInfo()}
+        backBtn.setOnClickListener{goBack()}
+
 
     }
+
+    fun goBack() {
+        val intent = Intent(this, Home_Screen::class.java)
+        startActivity(intent)
+    }
+
+
 
     private fun addInfo() {
         val infilter=LayoutInflater.from(this)
