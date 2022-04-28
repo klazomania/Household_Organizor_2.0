@@ -10,6 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tasklistapplication.model.UserData
+import com.example.tasklistapplication.view.EventAdapter
 import com.example.tasklistapplication.view.TaskAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -26,7 +27,7 @@ class Events_List : AppCompatActivity() {
         addsBtn=findViewById(R.id.fab)
         backBtn=findViewById(R.id.fab2)
         recv = findViewById(R.id.tasksRecycler)
-        taskAdapter= TaskAdapter(this,userList)
+        taskAdapter= EventAdapter(this,userList)
         recv.layoutManager=LinearLayoutManager(this)
         recv.adapter=taskAdapter
         addsBtn.setOnClickListener{addInfo()}
@@ -41,9 +42,9 @@ class Events_List : AppCompatActivity() {
 
     private fun addInfo() {
         val infilter=LayoutInflater.from(this)
-        val v=infilter.inflate(R.layout.add_item,null)
-        val taskName=v.findViewById<EditText>(R.id.taskName)
-        val taskDesc=v.findViewById<EditText>(R.id.taskDesc)
+        val v=infilter.inflate(R.layout.add_event_item,null)
+        val eventName=v.findViewById<EditText>(R.id.eventName)
+        val eventDesc=v.findViewById<EditText>(R.id.eventDesc)
 
         val addDialog=AlertDialog.Builder(this)
         addDialog.setView(v)
