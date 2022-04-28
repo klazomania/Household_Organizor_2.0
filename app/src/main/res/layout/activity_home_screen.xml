@@ -30,7 +30,6 @@
         android:onClick="openTaskList"
         android:src="@drawable/todolist"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.129" />
