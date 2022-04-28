@@ -13,7 +13,8 @@ import java.util.ArrayList;
 
 public class Expense_Add_Activity extends AppCompatActivity {
 
-    private ArrayList<String> itemList;
+    private ArrayList<String> amountList;
+    private ArrayList<String> descList;
     private String total;
 
     @Override
@@ -22,23 +23,32 @@ public class Expense_Add_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_expense_add);
         Intent i = getIntent();
         total = i.getStringExtra("total");
-        itemList = i.getStringArrayListExtra("list");
+        amountList = i.getStringArrayListExtra("amountList");
+        descList = i.getStringArrayListExtra("descList");
     }
 
     @SuppressLint("SetTextI18n")
     public void addAmount(View v){
 
-        String val = ((EditText)findViewById(R.id.amountInput)).getText().toString();
+        String amountVal = ((EditText)findViewById(R.id.amountInput)).getText().toString();
+        String descVal = ((EditText)findViewById(R.id.descInput)).getText().toString();
         Intent i = new Intent(this, Expense_Tracker.class);
 
-        if(val.equals("")){
+        if(amountVal.equals("")) {
             ((TextView) findViewById(R.id.message)).setText("Need to Add A Value");
             return;
         }
 
-        val = "$" + val;
-        i.putExtra("val", val);
-        i.putStringArrayListExtra("list", itemList);
+        if(descVal.equals("")){
+            ((TextView) findViewById(R.id.message)).setText("Need to Add A Description");
+            return;
+        }
+
+        amountVal = "$" + amountVal;
+        i.putExtra("amountVal", amountVal);
+        i.putExtra("descVal", descVal);
+        i.putStringArrayListExtra("amountList", amountList);
+        i.putStringArrayListExtra("descList", descList);
         i.putExtra("total",total);
         startActivity(i);
 
@@ -46,9 +56,11 @@ public class Expense_Add_Activity extends AppCompatActivity {
 
     public void cancel(View v){
         Intent i = new Intent(this, Expense_Tracker.class);
-        i.putStringArrayListExtra("list", itemList);
+        i.putStringArrayListExtra("amountList", amountList);
+        i.putStringArrayListExtra("descList", descList);
         i.putExtra("total", total);
-        i.putExtra("val", "cancel");
+        i.putExtra("amountVal", "cancel");
         startActivity(i);
     }
+
 }

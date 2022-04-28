@@ -12,18 +12,22 @@ import java.util.ArrayList;
 
 public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyViewHolder> {
 
-    private ArrayList<String> itemlist;
+    private ArrayList<String> amountList;
+    private ArrayList<String> descList;
 
-    public recyclerAdapter(ArrayList<String> itemlist){
-        this.itemlist = itemlist;
+    public recyclerAdapter(ArrayList<String> amountList, ArrayList<String> descList){
+        this.amountList = amountList;
+        this.descList = descList;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        private TextView itemText;
+        private TextView amountText;
+        private TextView descText;
 
         public MyViewHolder(final View view){
             super(view);
-            itemText = view.findViewById(R.id.textView3);
+            amountText = view.findViewById(R.id.amountView);
+            descText = view.findViewById(R.id.descView);
         }
     }
 
@@ -37,12 +41,16 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull recyclerAdapter.MyViewHolder holder, int position) {
-        String item = itemlist.get(position);
-        holder.itemText.setText(item);
+        String amount = amountList.get(position);
+        String desc = descList.get(position);
+        holder.amountText.setText(amount);
+        holder.descText.setText(desc);
+
     }
 
     @Override
     public int getItemCount() {
-        return itemlist.size();
+        return amountList.size();
     }
+
 }

@@ -15,37 +15,31 @@ import java.util.ArrayList;
 
 public class Expense_Tracker extends AppCompatActivity {
 
-    static final String STATE_USER = "user";
-    private String mUser;
-
-    private ArrayList<String> itemList;
+    private ArrayList<String> amountList;
+    private ArrayList<String> descList;
     private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (savedInstanceState != null) {
-            // Restore value of members from saved state
-            //itemList = savedInstanceState.getStringArrayList();
-            mUser = savedInstanceState.getString(STATE_USER);
-        } else {
-            mUser = "NewUser";
-        }
-
-
         setContentView(R.layout.activity_expense_tracker);
         recyclerView = findViewById(R.id.recView);
-        itemList = new ArrayList<>();
+        amountList = new ArrayList<>();
+        descList = new ArrayList<>();
         Intent i = getIntent();
-        String val = i.getStringExtra("val");
-        if(val == null)
+        String amountVal = i.getStringExtra("amountVal");
+        String descVal = i.getStringExtra("descVal");
+        if(amountVal == null)
             return;
 
-        if(!val.equals("cancel"))
-            itemList.add(val);
+        if(!amountVal.equals("cancel")) {
+            amountList.add(amountVal);
+            descList.add(descVal);
+        }
 
-        itemList.addAll(i.getStringArrayListExtra("list"));
-        double intVal = Double.valueOf(val.substring(1));
+        amountList.addAll(i.getStringArrayListExtra("amountList"));
+        descList.addAll(i.getStringArrayListExtra("descList"));
+        double intVal = Double.valueOf(amountVal.substring(1));
         double total = Double.valueOf(i.getStringExtra("total").substring(1));
         total += intVal;
         ((TextView)findViewById(R.id.runningTotal)).setText("$" + total);
@@ -53,15 +47,8 @@ public class Expense_Tracker extends AppCompatActivity {
         setAdapter();
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        savedInstanceState.putString(STATE_USER, mUser);
-        savedInstanceState.putAll(savedInstanceState);
-        super.onSaveInstanceState(savedInstanceState);
-    }
-
     private void setAdapter(){
-        recyclerAdapter adapter = new recyclerAdapter(itemList);
+        recyclerAdapter adapter = new recyclerAdapter(amountList, descList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -70,7 +57,8 @@ public class Expense_Tracker extends AppCompatActivity {
 
     public void openAdd(View v){
         Intent i = new Intent(this, Expense_Add_Activity.class);
-        i.putStringArrayListExtra("list", itemList);
+        i.putStringArrayListExtra("amountList", amountList);
+        i.putStringArrayListExtra("descList", descList);
         String total = ((TextView)findViewById(R.id.runningTotal)).getText().toString();
         i.putExtra("total", total);
         startActivity(i);
@@ -78,9 +66,11 @@ public class Expense_Tracker extends AppCompatActivity {
 
     public void goBack(View v) {
         Intent intent = new Intent(this, Home_Screen.class);
+        intent.putStringArrayListExtra("descList", descList);
+        intent.putStringArrayListExtra("amountList", amountList);
         startActivity(intent);
     }
 
 
-}
 
+}
