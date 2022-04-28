@@ -32,7 +32,7 @@ class Chore_List : AppCompatActivity() {
 
     private fun addInfo() {
         val infilter=LayoutInflater.from(this)
-        val v=infilter.inflate(R.layout.add_item,null)
+        val v=infilter.inflate(R.layout.chores_add_item,null)
         val choreName=v.findViewById<EditText>(R.id.choreName)
         val choreDesc=v.findViewById<EditText>(R.id.choreDesc)
         val choreDate=v.findViewById<EditText>(R.id.choreDate)
