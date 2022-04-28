@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TaskListApplication</string>
+    <string name="myHome">myHome</string>
 </resources>
