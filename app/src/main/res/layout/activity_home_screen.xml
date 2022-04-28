@@ -26,12 +26,14 @@
         android:layout_height="243dp"
         android:layout_marginTop="84dp"
         android:layout_marginBottom="50dp"
+        android:adjustViewBounds="false"
         android:onClick="openTaskList"
+        android:src="@drawable/todolist"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.083"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        app:layout_constraintVertical_bias="0.129" />
 
     <ImageButton
         android:id="@+id/imageButton2"
@@ -39,37 +41,30 @@
         android:layout_height="243dp"
         android:layout_marginTop="80dp"
         android:onClick="openEventList"
+        android:src="@drawable/eventspicture"
+        android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <ImageButton
         android:id="@+id/imageButton3"
         android:layout_width="182dp"
         android:layout_height="243dp"
         android:onClick="openExpenseTracker"
+        android:src="@drawable/bankingpic"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/imageButton4"
         android:layout_width="182dp"
         android:layout_height="243dp"
         android:onClick="openChoreList"
+        android:src="@drawable/chorespicture"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="182dp"
-        android:layout_height="22dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="48dp"
-        android:text="Expense Tracker"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton3"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
