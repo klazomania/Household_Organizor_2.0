@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/teal_200"
     tools:context=".Expense_Tracker">
 
 
@@ -16,6 +17,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginBottom="32dp"
         android:onClick="goBack"
+        android:backgroundTint="@color/purple_200"
         android:src="@drawable/back_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -26,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/purple_200"
         android:clickable="true"
         android:onClick="openAdd"
         app:layout_constraintBottom_toBottomOf="parent"
